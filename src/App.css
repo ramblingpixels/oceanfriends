@@ -380,10 +380,6 @@ li {
 	justify-content: center;
 }
 
-path {
-	fill: #fff;
-}
-
 .active-link {
 	border-radius: 100%;
 	background: linear-gradient(#5d9eff, #7751fd);
