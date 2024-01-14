@@ -30,7 +30,7 @@ const Cards = ({ cards }) => {
 			<div className="horizontal-carousel">
 				<div
 					className="carousel-container"
-					style={{ transform: `translateX(${-currentIndex * 100}%)` }}
+					style={{ transform: `translateX(${-currentIndex * 50}%)` }}
 				>
 					{cards.map((card) => (
 						<Link to={`/card/${card.id}`} className="card-link" key={card.id}>

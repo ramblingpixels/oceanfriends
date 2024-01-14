@@ -49,7 +49,7 @@ const Catalogue = () => {
 			<br />
 
 			{items.map((item) => (
-				<>
+				<div>
 					<div className="catalogue-item">
 						<span>{item.icon}</span>
 						<div>
@@ -61,14 +61,17 @@ const Catalogue = () => {
 						</div>
 						<button
 							className={
-								item.amount[1] == 0 ? "disabled-pay-button" : "pay-button"
+								// eslint-disable-next-line eqeqeq
+								parseInt(item.amount[1]) === 0
+									? "disabled-pay-button"
+									: "pay-button"
 							}
 						>
 							Pay
 						</button>
 					</div>
 					<hr />
-				</>
+				</div>
 			))}
 		</div>
 	);

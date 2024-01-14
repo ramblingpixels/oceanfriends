@@ -106,7 +106,7 @@ function App() {
 	return (
 		<div className="container">
 			<Routes>
-				<Route path="/home" element={<Home cards={cards} />}></Route>
+				<Route path="/" element={<Home cards={cards} />}></Route>
 				<Route path="/catalogue" element={<Catalogue />}></Route>
 				<Route path="/history" element={<History items={items} />}></Route>
 				<Route path="/union" element={<Union />}></Route>

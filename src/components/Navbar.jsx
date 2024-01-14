@@ -8,7 +8,7 @@ import UnionSvg from "./SvgComponents/UnionSvg";
 const svgs = [
 	{
 		id: 1,
-		name: "home",
+		name: "",
 		svgComponent: <HomeSvg />,
 	},
 	{
@@ -29,7 +29,7 @@ const svgs = [
 ];
 
 const Navbar = () => {
-	const [activeLink, setActiveLink] = useState("home");
+	const [activeLink, setActiveLink] = useState("");
 
 	const handleClick = (currentLink) => {
 		setActiveLink(currentLink);

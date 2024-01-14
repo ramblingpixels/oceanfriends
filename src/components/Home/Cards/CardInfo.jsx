@@ -24,10 +24,16 @@ const CardInfo = ({ cards, items }) => {
 
 	let currentDate = null;
 
+	const [isMoved, setIsMoved] = useState(false);
+
+	const handleClick = () => {
+		setIsMoved((prevIsMoved) => !prevIsMoved);
+	};
+
 	return (
 		<>
 			<div className="card-info">
-				<Link to="/home">
+				<Link to="/">
 					<BackArrowSvg />
 				</Link>
 				<h1>Salary Card</h1>
@@ -47,7 +53,7 @@ const CardInfo = ({ cards, items }) => {
 				) : (
 					//Front Side
 					<div
-						className="card-item card-item-info"
+						className=" card-item-info"
 						style={{ background: selectedCard[0].gradient }}
 						onMouseDown={handleMouseDown}
 					>
@@ -86,9 +92,9 @@ const CardInfo = ({ cards, items }) => {
 			</div>
 
 			{/* Card History */}
-			<div className="card-history">
+			<div className={`card-history ${isMoved ? "moved" : ""}`}>
 				<span>
-					<hr className="history-hr-button" />
+					<hr className="history-hr-button" onClick={handleClick} />
 				</span>
 				{items.map((item) => {
 					const transactionDate = item.date;

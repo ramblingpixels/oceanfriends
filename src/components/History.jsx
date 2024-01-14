@@ -1,11 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DpSvg from "./SvgComponents/DpSvg";
 
 const History = ({ items }) => {
 	let currentDate = null;
 
+	const [scrollDirection, setScrollDirection] = useState("down");
+	const [scrollPosition, setScrollPosition] = useState(0);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const currentPosition = window.pageYOffset;
+
+			if (currentPosition > scrollPosition) {
+				setScrollDirection("up");
+			} else if (currentPosition < scrollPosition) {
+				setScrollDirection("down");
+			}
+
+			setScrollPosition(currentPosition);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, [scrollPosition]);
+
+	const translateStyle = {
+		transform: `translateY(${scrollDirection === "up" ? "-30%" : "0"})`,
+		transition: "transform 0.5s ease",
+	};
+
 	return (
-		<div className="history-content">
+		<div className="history-content" style={translateStyle}>
 			<div className="history-header">
 				<h1>History</h1>
 				<DpSvg />
@@ -28,7 +56,7 @@ const History = ({ items }) => {
 					<>
 						{dateHeader}
 
-						<div className="history-item">
+						<div className="history-item" key={item.id}>
 							<span style={{ background: item.gradient }}>{item.icon}</span>
 							<div>
 								{item.name}

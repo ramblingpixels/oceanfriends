@@ -63,23 +63,30 @@ h4 {
 }
 
 /* Cards */
-.card-link {
-	text-decoration: none;
-}
 
 .horizontal-carousel {
-	margin-left: 30px;
+	margin-top: 20px;
 }
 
 .carousel-container {
 	display: flex;
+	gap: 20px;
 	transition: transform 0.5s ease;
 }
+
+.card-link {
+	text-decoration: none;
+	width: 250px;
+	height: 400px;
+}
+
 .card-item {
 	padding: 20px;
 	border-radius: 18px;
-	margin-top: 20px;
+	width: 360px;
+	height: 210px;
 	rotate: 270deg;
+	translate: -75px 75px;
 }
 
 .card-item:hover {
@@ -174,8 +181,30 @@ h4 {
 
 .card-item-info {
 	rotate: 360deg;
-
 	transition: opacity 0.3s ease;
+	padding: 20px;
+	border-radius: 18px;
+	margin-top: 20px;
+}
+
+.card-item-info:hover {
+	cursor: pointer;
+}
+
+.card-item-info div {
+	display: flex;
+}
+
+.card-item-info div:nth-child(2) {
+	justify-content: space-between;
+}
+.card-item-info div:nth-child(4) {
+	justify-content: space-between;
+}
+
+.card-item-info div:nth-child(1) {
+	align-items: center;
+	gap: 10px;
 }
 
 .card-info h1 {
@@ -218,7 +247,7 @@ h4 {
 	border-radius: 18px;
 	rotate: 360deg;
 	padding-top: 30px;
-	padding-bottom: 45px;
+	padding-bottom: 42.5px;
 	transition: opacity 0.3s ease;
 }
 
@@ -247,10 +276,21 @@ h4 {
 	padding: 20px;
 	border-radius: 20px;
 	margin-top: 10px;
+	transition: transform 0.5s ease;
 }
 
 .history-hr-button {
+	border: 3px solid #2d3757;
 	width: 20%;
+	border-radius: 10px;
+}
+
+.history-hr-button:hover {
+	cursor: pointer;
+}
+
+.moved {
+	transform: translateY(-50%);
 }
 
 /* Catalogue */
@@ -340,9 +380,9 @@ li {
 	justify-content: center;
 }
 
-/* path {
+path {
 	fill: #fff;
-} */
+}
 
 .active-link {
 	border-radius: 100%;
