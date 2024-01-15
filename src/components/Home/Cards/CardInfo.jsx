@@ -5,6 +5,7 @@ import CardWifiSvg from "../../SvgComponents/CardWifiSvg";
 import MCSvg from "../../SvgComponents/MCSvg";
 import HistorySvg from "../../SvgComponents/HistorySvg";
 import ShareSvg from "../../SvgComponents/ShareSvg";
+import { motion } from "framer-motion";
 
 const CardInfo = ({ cards, items }) => {
 	const [showBack, setShowBack] = useState(false);
@@ -32,7 +33,12 @@ const CardInfo = ({ cards, items }) => {
 
 	return (
 		<>
-			<div className="card-info">
+			<motion.div
+				className="card-info"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.1 }}
+			>
 				<Link to="/">
 					<BackArrowSvg />
 				</Link>
@@ -44,6 +50,10 @@ const CardInfo = ({ cards, items }) => {
 						className="card-item-back"
 						style={{ background: selectedCard[0].gradient }}
 						onMouseUp={handleMouseUp}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: 0.5 }}
 					>
 						<div className="black-strip"></div>
 						<div className="cvv-strip">
@@ -52,10 +62,13 @@ const CardInfo = ({ cards, items }) => {
 					</div>
 				) : (
 					//Front Side
-					<div
+					<motion.div
 						className=" card-item-info"
 						style={{ background: selectedCard[0].gradient }}
 						onMouseDown={handleMouseDown}
+						initial={{ rotate: -90, translateY: 250, scale: 1.2 }}
+						animate={{ rotate: 0, translateY: 0, scale: 1 }}
+						transition={{ duration: 0.5 }}
 					>
 						<div>
 							<h1 className="card-bank-name">CB</h1>
@@ -71,7 +84,7 @@ const CardInfo = ({ cards, items }) => {
 							<span className="card-expiry">{selectedCard[0].expiry}</span>
 							<MCSvg />
 						</div>
-					</div>
+					</motion.div>
 				)}
 
 				{/* Below Card */}
@@ -89,7 +102,7 @@ const CardInfo = ({ cards, items }) => {
 						</span>
 					</div>
 				</div>
-			</div>
+			</motion.div>
 
 			{/* Card History */}
 			<div className={`card-history ${isMoved ? "moved" : ""}`}>

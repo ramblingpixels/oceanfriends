@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import CardWifiSvg from "../../SvgComponents/CardWifiSvg";
 import MCSvg from "../../SvgComponents/MCSvg";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Cards = ({ cards }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
+	console.log(cards);
 
 	const [button1Size, setButton1Size] = useState("large");
 	const [button2Size, setButton2Size] = useState("normal");
@@ -34,7 +36,13 @@ const Cards = ({ cards }) => {
 				>
 					{cards.map((card) => (
 						<Link to={`/card/${card.id}`} className="card-link" key={card.id}>
-							<div className="card-item" style={{ background: card.gradient }}>
+							<motion.div
+								className="card-item"
+								style={{ background: card.gradient }}
+								initial={{ rotate: 90 }}
+								animate={{ rotate: 0 }}
+								transition={{ duration: 0.5 }}
+							>
 								<div>
 									<h1 className="card-bank-name">CB</h1>
 									<span className="vertical-line-card">|</span>
@@ -49,7 +57,7 @@ const Cards = ({ cards }) => {
 									<span className="card-expiry">{card.expiry}</span>
 									<MCSvg />
 								</div>
-							</div>
+							</motion.div>
 						</Link>
 					))}
 				</div>

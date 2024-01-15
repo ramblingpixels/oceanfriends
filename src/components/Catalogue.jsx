@@ -5,6 +5,7 @@ import WifiSvg from "../components/SvgComponents/WifiSvg";
 import CarSvg from "../components/SvgComponents/CarSvg";
 import HouseSvg from "../components/SvgComponents/HouseSvg";
 import FlashSvg from "../components/SvgComponents/FlashSvg";
+import { motion } from "framer-motion";
 
 const Catalogue = () => {
 	const items = [
@@ -41,7 +42,12 @@ const Catalogue = () => {
 	];
 
 	return (
-		<div className="catalogue-content">
+		<motion.div
+			className="catalogue-content"
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 0.3 }}
+		>
 			<div className="catalogue-header">
 				<h1>Catalogue</h1>
 				<DpSvg />
@@ -49,7 +55,11 @@ const Catalogue = () => {
 			<br />
 
 			{items.map((item) => (
-				<div>
+				<motion.div
+					initial={{ translateY: 10 }}
+					animate={{ translateY: 0 }}
+					transition={{ duration: 0.3 }}
+				>
 					<div className="catalogue-item">
 						<span>{item.icon}</span>
 						<div>
@@ -71,9 +81,9 @@ const Catalogue = () => {
 						</button>
 					</div>
 					<hr />
-				</div>
+				</motion.div>
 			))}
-		</div>
+		</motion.div>
 	);
 };
 

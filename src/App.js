@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
@@ -9,6 +9,7 @@ import CardInfo from "./components/Home/Cards/CardInfo";
 import Arrow from "./components/SvgComponents/ArrowSvg";
 import Uber from "./components/SvgComponents/UberSvg";
 import Music from "./components/SvgComponents/MusicSvg";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
 	const cards = [
@@ -27,6 +28,8 @@ function App() {
 			gradient: "linear-gradient(240deg, #F3AC6E, #EC6531, #ED6F2F)",
 		},
 	];
+
+	const location = useLocation();
 
 	const items = [
 		{
@@ -105,16 +108,18 @@ function App() {
 
 	return (
 		<div className="container">
-			<Routes>
-				<Route path="/" element={<Home cards={cards} />}></Route>
-				<Route path="/catalogue" element={<Catalogue />}></Route>
-				<Route path="/history" element={<History items={items} />}></Route>
-				<Route path="/union" element={<Union />}></Route>
-				<Route
-					path="/card/:id"
-					element={<CardInfo cards={cards} items={items} />}
-				></Route>
-			</Routes>
+			<AnimatePresence mode="wait">
+				<Routes location={location} key={location.pathname}>
+					<Route path="/" element={<Home cards={cards} />}></Route>
+					<Route path="/catalogue" element={<Catalogue />}></Route>
+					<Route path="/history" element={<History items={items} />}></Route>
+					<Route path="/union" element={<Union />}></Route>
+					<Route
+						path="/card/:id"
+						element={<CardInfo cards={cards} items={items} />}
+					></Route>
+				</Routes>
+			</AnimatePresence>
 
 			<Navbar />
 		</div>

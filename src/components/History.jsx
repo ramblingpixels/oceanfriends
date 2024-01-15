@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DpSvg from "./SvgComponents/DpSvg";
+import { motion } from "framer-motion";
 
 const History = ({ items }) => {
 	let currentDate = null;
@@ -33,7 +34,13 @@ const History = ({ items }) => {
 	};
 
 	return (
-		<div className="history-content" style={translateStyle}>
+		<motion.div
+			className="history-content"
+			style={translateStyle}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 0.3 }}
+		>
 			<div className="history-header">
 				<h1>History</h1>
 				<DpSvg />
@@ -53,7 +60,11 @@ const History = ({ items }) => {
 				currentDate = transactionDate;
 
 				return (
-					<>
+					<motion.div
+						initial={{ translateY: 10 }}
+						animate={{ translateY: 0 }}
+						transition={{ duration: 0.3 }}
+					>
 						{dateHeader}
 
 						<div className="history-item" key={item.id}>
@@ -67,10 +78,10 @@ const History = ({ items }) => {
 							<h4>{item.amount}</h4>
 						</div>
 						<hr />
-					</>
+					</motion.div>
 				);
 			})}
-		</div>
+		</motion.div>
 	);
 };
 
